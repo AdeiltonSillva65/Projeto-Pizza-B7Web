@@ -92,8 +92,19 @@ c(".pizzaInfo--addButton").addEventListener('click', ()=>{
    updateCart();
   closeModal();
 });
+  
+  c('.menu-openner').addEventListener ('click', () => {
+    if (cart.length > 0) {
+        c('aside').style.left = '0';
+    }
+  });
+  c('.menu-closer').addEventListener('click', ()=>{
+    c('aside').style.left = '100vw';
+  });
 
 function updateCart() {
+  c('.menu-openner span').innerHTML = cart.length;
+
   if (cart.length > 0) {
     c('aside').classList.add('show');
     c('.cart').innerHTML= '';
@@ -150,6 +161,7 @@ function updateCart() {
     c('.total span:last-child').innerHTML = `R$ ${total.toFixed(2)}`;
 
   }else {
-    c('aside').classList.remove('show'); //show signnifica mostrar
+    c('aside').classList.remove('show'); //show significa mostrar
+    c('aside').style.left = '100vw';
   }
 }
